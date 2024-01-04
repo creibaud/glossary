@@ -14,12 +14,13 @@ type patchProps = {
     links: string[]
 }
 
-const getAllTerms = () => {
+const getAllTerms = async () => {
+    await connectionToDatabase();
     return TermModel.find({}).sort({ term: 1 });
 };
 
 const getTerm = async (term: string) => {
-    const connection = await connectionToDatabase();
+    await connectionToDatabase();
 
     const termData = await TermModel.findOne({ term: term });
 
@@ -31,7 +32,7 @@ const getTerm = async (term: string) => {
 };
 
 const addTerm = async ({ term, meaning, links }: addProps) => {
-    const connection = await connectionToDatabase();
+    await connectionToDatabase();
 
     const newTerm = new TermModel({
         term,
@@ -51,7 +52,7 @@ const addTerm = async ({ term, meaning, links }: addProps) => {
 };
 
 const patchTerm = async ({ term, newTerm, meaning, links }: patchProps) => {
-    const connection = await connectionToDatabase();
+    await connectionToDatabase();
 
     const termData = await TermModel.findOne({ term: term });
     const newTermIsUnique = await TermModel.findOne({ term: newTerm });
@@ -83,7 +84,7 @@ const patchTerm = async ({ term, newTerm, meaning, links }: patchProps) => {
 };
 
 const removeTerm = async (term: string) => {
-    const connection = await connectionToDatabase();
+    await connectionToDatabase();
 
     const termData = await TermModel.findOne({ term: term });
 

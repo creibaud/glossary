@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+mongoose.set("bufferCommands", false);
+mongoose.set("bufferTimeoutMS", 30000);
+
 let isConnected: boolean = false;
 
 const connectionToDatabase = async () => {
