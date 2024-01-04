@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "My App",
-    description: "This is my app",
+    title: "Guardia | Glossary",
+    description: "IT Glossary"
 };
 
 type Props = {
