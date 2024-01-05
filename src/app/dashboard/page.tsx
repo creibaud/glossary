@@ -6,7 +6,7 @@ type Term = {
 };
 
 const DashboardPage = async () => {
-    const res = await fetch("http://localhost:3000/api/terms", {
+    const res = await fetch(process.env.HOST + "/api/terms", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
